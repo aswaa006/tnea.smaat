@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Ensure the uploads folder exists
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = os.path.abspath('uploads')  # Absolute path for reliability
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Define category percentages for processing
@@ -79,20 +79,45 @@ def process_csv(input_file, output_file, column_names):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
+        # Debug: Ensure the file is received
+        if 'file' not in request.files:
+            print("❌ No file part in the request.")
+            return "No file part in the request."
+
         file = request.files['file']
-        if file:
-            file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-            file.save(file_path)
-            process_type = request.form['process_type']
 
-            if process_type == 'process1':
-                output_file = add_computed_columns(file_path)
-            elif process_type == 'process2':
-                output_file = process_csv(file_path, os.path.join(UPLOAD_FOLDER, f"2_{file.filename}"), ['total'])
-            else:
-                output_file = process_csv(file_path, os.path.join(UPLOAD_FOLDER, f"3_{file.filename}"), list(category_percentages.keys()) + [f"{key}_7.5" for key in category_percentages.keys()])
+        # Debug: Ensure file has a name
+        if file.filename == '':
+            print("❌ No file selected for uploading.")
+            return "No file selected for uploading."
 
+        # Debug: File name confirmation
+        print(f"✅ Received file: {file.filename}")
+
+        # Save file to the upload directory
+        file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(file_path)
+
+        # Debug: Confirm file save location
+        print(f"📂 File saved at: {file_path}")
+
+        # Process file based on selected method
+        process_type = request.form['process_type']
+
+        if process_type == 'process1':
+            output_file = add_computed_columns(file_path)
+        elif process_type == 'process2':
+            output_file = process_csv(file_path, os.path.join(UPLOAD_FOLDER, f"2_{file.filename}"), ['total'])
+        else:
+            output_file = process_csv(file_path, os.path.join(UPLOAD_FOLDER, f"3_{file.filename}"), list(category_percentages.keys()) + [f"{key}_7.5" for key in category_percentages.keys()])
+
+        # Debug: Confirm file processing completion
+        if os.path.exists(output_file):
+            print(f"✅ Processed file saved at: {output_file}")
             return send_file(output_file, as_attachment=True)
+        else:
+            print("❌ File processing failed.")
+            return "File processing failed."
 
     return render_template('index.html')
 
