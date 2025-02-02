@@ -1,0 +1,127 @@
+body {
+    background: linear-gradient(-45deg, #160039, #012957, #00313a, #250021);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 960px;
+    flex-wrap: wrap;
+}
+
+.box:nth-child(1) {
+    order: 2;
+}
+
+.box:nth-child(2) {
+    order: 3;
+}
+
+.box:nth-child(3) {
+    order: 1;
+}
+
+.box {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    width: 300px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #6200ea;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+.footer {
+    padding: 20px;
+    background-color: #222;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+    border-top: 2px solid #6200ea;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: #fff;
+}
+
+.footer strong {
+    color: #6200ea;
+}
+
+.footer em {
+    color: #aaa;
+}
+
+.footer a {
+    color: #6200ea;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
