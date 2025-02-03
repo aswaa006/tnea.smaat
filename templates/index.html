@@ -4,59 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV Processing Tool</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
 </head>
 <body>
     <h1 class="title">TNEA Smart Seat Allocation Tool (SMAAT)</h1>
     
     <div class="container">
-        <!-- First Box -->
+
+       
+            
+            <div class="box">
+                <h2>STEP-3: Integer Value and Adjustment Process</h2>
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" required>
+                    <select name="process_type">
+                        <option value="process3">Process 3</option>
+                    </select>
+                    <button type="submit">Upload and Process</button>
+                </form>
+            </div>
+       
+            <div class="box">
+                <h2>STEP-4: Generate Excel Report with Summaries</h2>
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" required>
+                    <select name="process_type">
+                        <option value="process4">Process 4</option>
+                    </select>
+                    <button type="submit">Upload and Process</button>
+                </form>
+            </div>
+
         <div class="box">
-            <h2>STEP-2: Caste Wise Decimal <br> Value Division</h2>
+            <h2>STEP-2: Caste Wise Decimal Value Division</h2>
             <form action="/" method="post" enctype="multipart/form-data">
-                <label for="file1">Upload CSV File:</label>
-                <input type="file" name="file" id="file1" required>
-                <label for="process_type1">Select Processing Type:</label>
+                <input type="file" name="file" required>
                 <select name="process_type">
                     <option value="process2">Process 2</option>
                 </select>
                 <button type="submit">Upload and Process</button>
             </form>
         </div>
-
-        <!-- Second Box -->
         <div class="box">
-            <h2>STEP-3: Integer Value and Adjustment Process of Decimal Values</h2>
-            <form action="/" method="post" enctype="multipart/form-data">
-                <label for="file2">Upload CSV File:</label>
-                <input type="file" name="file" id="file2" required>
-                <label for="process_type2">Select Processing Type:</label>
-                <select name="process_type">
-                    <option value="process3">Process 3</option>
-                </select>
-                <button type="submit">Upload and Process</button>
-            </form>
-        </div>
-
-        <!-- Third Box -->
-        <div class="box">
-            <h2>STEP-1: Divide No. Of Seats <br> into 92.5% + 7.5%</h2>
-            <form action="/" method="post" enctype="multipart/form-data">
-                <label for="file3">Upload CSV File:</label>
-                <input type="file" name="file" id="file3" required>
-                <label for="process_type3">Select Processing Type:</label>
-                <select name="process_type">
-                    <option value="process1">Process 1</option>
-                </select>
-                <button type="submit">Upload and Process</button>
-            </form>
-        </div>
+        <h2>STEP-1: Divide No. Of Seats into 92.5% + 7.5%</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <select name="process_type">
+                <option value="process1">Process 1</option>
+            </select>
+            <button type="submit">Upload and Process</button>
+        </form>
     </div>
 
-    <!-- Footer Section -->
-    <div class="footer">
-        <p>Developed by <strong>DiffuseAi</strong></p>
-        <p><em>A Student Driven Endeavour</em></p>
+      
     </div>
 </body>
 </html>
